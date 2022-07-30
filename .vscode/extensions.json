@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "bbenoist.nix",
+    "starkware.cairo",
+    "ms-python.python",
+    "editorconfig.editorconfig"
+  ]
+}
