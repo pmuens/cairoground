@@ -15,12 +15,18 @@ namespace StorageContract:
 end
 
 @external
+func __setup__():
+    # We deploy contract and put its address into a local variable. Second argument is calldata array
+    %{ context.contract_address = deploy_contract("./src/storage_contract.cairo", [100, 0, 1]).contract_address %}
+    return ()
+end
+
+@external
 func test_proxy_contract{syscall_ptr : felt*, range_check_ptr}():
     alloc_locals
 
     local contract_address : felt
-    # We deploy contract and put its address into a local variable. Second argument is calldata array
-    %{ ids.contract_address = deploy_contract("./src/storage_contract.cairo", [100, 0, 1]).contract_address %}
+    %{ ids.contract_address = context.contract_address %}
 
     let (res) = StorageContract.get_balance(contract_address=contract_address)
     assert res.low = 100
