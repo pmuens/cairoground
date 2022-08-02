@@ -9,6 +9,9 @@ main = [
     "src/main.cairo",
 ]
 
+["protostar.shared_command_configs"]
+cairo-path = ["./lib/cairo_contracts/src"]
+
 # https://github.com/Shard-Labs/starknet-devnet
 [profile.devnet.protostar.deploy]
 gateway-url="http://127.0.0.1:5050/"
